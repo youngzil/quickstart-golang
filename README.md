@@ -4,6 +4,9 @@
 https://github.com/golang/go
 https://github.com/avelino/awesome-go
 
+https://golang.org
+https://github.com/golang/go
+
 
 安装完成后
 go version
