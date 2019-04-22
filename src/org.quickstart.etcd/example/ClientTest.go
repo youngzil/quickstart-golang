@@ -49,3 +49,36 @@ func main() {
 	}
 
 }
+
+func ExampleWatcher_watchWithPrefix() {
+	cli, err := clientv3.New(clientv3.Config{
+		Endpoints:   endpoints,
+		DialTimeout: dialTimeout,
+	})
+
+	if err != nil {
+		fmt.Println("connect failed, err:", err)
+		return
+	}
+
+	defer cli.Close()
+
+	rch := cli.Watch(context.Background(), "foo", clientv3.WithPrefix())
+	for wresp := range rch {
+		for _, ev := range wresp.Events {
+			fmt.Printf("%s %q : %q\n", ev.Type, ev.Kv.Key, ev.Kv.Value)
+		}
+	}
+
+	wc := cli.Watch(context.Background(), "/job/", clientv3.WithPrefix(), clientv3.WithPrevKV())
+	for v := range wc {
+		if v.Err() != nil {
+			panic(err)
+		}
+		for _, e := range v.Events {
+			fmt.Printf("type:%v\n kv:%v  prevKey:%v  ", e.Type, e.Kv, e.PrevKv)
+		}
+	}
+
+	// PUT "foo1" : "bar"
+}

@@ -24,6 +24,45 @@ go run hello.go
 
 
 
+-------------------------------------------------------------------------------------------------
+1、golang的命名需要使用驼峰命名法，且不能出现下划线
+
+2、golang中根据首字母的大小写来确定可以访问的权限。无论是方法名、常量、变量名还是结构体的名称，如果首字母大写，则可以被其他的包访问；如果首字母小写，则只能在本包中使用
+  可以简单的理解成，首字母大写是公有的，首字母小写是私有的
+  
+3、结构体中属性名的大写
+如果属性名小写则在数据解析（如json解析,或将结构体作为请求或访问参数）时无法解析
+ --------------------------------------------------------------------------------------------------------
+
+Golang文件名命名规则
+文件名_平台.go
+文件名_test.go或者 文件名_平台_test.go
+文件名_版本号.go
+文件名_(平台:可选)_CPU类型.go
+
+
+注意点一、
+go build 的时候会选择性地编译以系统名结尾的文件(linux、darwin、windows、freebsd)。例如Linux(Unix)系统下编译只会选择array_linux.go文件，其它系统命名后缀文件全部忽略。
+
+ 注意点二、
+在xxx.go文件的文件头上添加 // + build !windows (tags)，可以选择在windows系统下面不编译 
+// +build !windows
+package main
+
+总结：golang跨平台没有java好用，但是跟c语言差不多，都得针对不同平台不同特性迭轮子
+
+
+
+
+
+文件命名规范
+https://golang.google.cn/doc/effective_go.html#mixed-caps
+https://golang.org/doc/effective_go.html#package-names
+https://www.cnblogs.com/hetonghai/p/9049536.html
+
+
+
+
 https://golang.org
 https://github.com/golang/go
 
