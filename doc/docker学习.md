@@ -5,11 +5,10 @@ go get -u -v -insecure github.com/docker/docker/client
 
 示例参考
 https://docs.docker.com/develop/sdk/examples/
+https://godoc.org/github.com/docker/docker/client
 
 
-Kubernetes使用示例和golang客户端示例
-https://github.com/kubernetes/examples
-https://github.com/kubernetes/client-go
+
 
 
 

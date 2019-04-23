@@ -30,6 +30,7 @@ func main() {
 	}
 
 	for _, container := range containers {
-		fmt.Println(container.ID)
+		fmt.Printf("%s %s\n", container.ID[:10], container.Image)
 	}
+
 }

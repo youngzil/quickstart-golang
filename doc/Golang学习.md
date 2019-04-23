@@ -3,6 +3,29 @@ go build hello.go
 或者
 go run hello.go
 
+Golang依赖管理工具dep
+https://github.com/golang/dep
+
+
+文档
+https://golang.github.io/dep/
+
+
+安装
+Linux curl https://raw.githubusercontent.com/golang/dep/master/install.sh | sh
+MacOS
+$ brew install dep
+$ brew upgrade dep
+
+安装后
+dep version
+
+
+$GOPATH/src路径下的项目的根目录下执行 dep init就会下载依赖到$GOPATH/pkg/dep/sources下面
+
+
+
+
 
 1、第一行代码 package main 定义了包名。你必须在源文件中非注释的第一行指明这个文件属于哪个包，如：package main。package main表示一个可独立执行的程序，每个 Go 应用程序都包含一个名为 main 的包。
 2、下一行 import "fmt" 告诉 Go 编译器这个程序需要使用 fmt 包（的函数，或其他元素），fmt 包实现了格式化 IO（输入/输出）的函数。
