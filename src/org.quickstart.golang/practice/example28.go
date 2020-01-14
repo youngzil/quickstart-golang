@@ -37,7 +37,7 @@ s1 := s[startIndex:endIndex]
 s :=make([]int,len,cap)
 通过内置函数make()初始化切片s,[]int 标识为其元素类型为int的切片*/
 
-package practice
+package main
 
 import "fmt"
 

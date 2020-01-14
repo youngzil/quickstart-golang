@@ -1,6 +1,6 @@
 // You can edit this code!
 // Click here and start typing.
-package practice
+package main
 
 import "fmt"
 
