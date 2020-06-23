@@ -5,5 +5,14 @@ target/
 .idea/
 *.iml
 .DS_Store
-.pydevproject
 .gitignore
+
+
+
+go.sum
+vendor/
+coverage.txt
+examples/test
+
+
+
