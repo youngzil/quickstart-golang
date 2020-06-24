@@ -1,3 +1,13 @@
+Golang安装
+Golang文件名命名规则
+Golang依赖管理工具dep
+Golang 在 Mac、Linux、Windows 下如何交叉编译
+
+
+
+---------------------------------------------------------------------------------------------------------------------  
+Golang安装
+
 安装
 brew install go
 
@@ -12,6 +22,15 @@ export GOROOT="/usr/local/Cellar/go/1.14.4/libexec"
 export GOPATH=/Users/yangzl/go:/Users/yangzl/git/quickstart-golang
 export PATH=$PATH:$GOPATH/bin
 
+Linux安装：
+1、解压tar
+2、配置环境变量
+export GOROOT=/home/aibuild45/yang/go
+export GOPATH=/home/aibuild45/yang/go
+export PATH=$PATH:$GOROOT/bin
+3、go env
+
+
 source .bash_profile
 source ~/.zshrc
 
@@ -21,6 +40,67 @@ go build hello.go
 或者
 go run hello.go
 
+
+
+https://golang.org
+https://github.com/golang/go
+
+
+中文社区
+https://studygolang.com/
+https://gocn.vip/
+https://github.com/shen100/golang123
+
+
+学习示例
+https://github.com/SimonWaldherr/golang-examples
+
+
+
+
+
+学习教程
+http://www.runoob.com/go/go-tutorial.html
+https://blog.csdn.net/han0373/article/category/7676220
+https://github.com/Unknwon/the-way-to-go_ZH_CN
+https://github.com/dariubs/GoBooks
+https://github.com/golang101/golang101
+
+https://github.com/Alikhll/golang-developer-roadmap/blob/master/i18n/ReadMe-zh-CN.md
+
+
+---------------------------------------------------------------------------------------------------------------------  
+Golang文件名命名规则
+文件名_平台.go
+文件名_test.go或者 文件名_平台_test.go
+文件名_版本号.go
+文件名_(平台:可选)_CPU类型.go
+
+1、golang的命名需要使用驼峰命名法，且不能出现下划线
+2、golang中根据首字母的大小写来确定可以访问的权限。无论是方法名、常量、变量名还是结构体的名称，如果首字母大写，则可以被其他的包访问；如果首字母小写，则只能在本包中使用
+  可以简单的理解成，首字母大写是公有的，首字母小写是私有的
+3、结构体中属性名的大写
+如果属性名小写则在数据解析（如json解析,或将结构体作为请求或访问参数）时无法解析
+
+
+
+注意点一、
+go build 的时候会选择性地编译以系统名结尾的文件(linux、darwin、windows、freebsd)。例如Linux(Unix)系统下编译只会选择array_linux.go文件，其它系统命名后缀文件全部忽略。
+
+ 注意点二、
+在xxx.go文件的文件头上添加 // + build !windows (tags)，可以选择在windows系统下面不编译 
+// +build !windows
+package main
+
+总结：golang跨平台没有java好用，但是跟c语言差不多，都得针对不同平台不同特性迭轮子
+
+
+文件命名规范
+https://golang.google.cn/doc/effective_go.html#mixed-caps
+https://golang.org/doc/effective_go.html#package-names
+https://www.cnblogs.com/hetonghai/p/9049536.html
+
+---------------------------------------------------------------------------------------------------------------------  
 Golang依赖管理工具dep
 https://github.com/golang/dep
 
@@ -63,73 +143,6 @@ $GOPATH/src路径下的项目的根目录下执行 dep init就会下载依赖到
 16、
 
 
-
-
--------------------------------------------------------------------------------------------------
-1、golang的命名需要使用驼峰命名法，且不能出现下划线
-
-2、golang中根据首字母的大小写来确定可以访问的权限。无论是方法名、常量、变量名还是结构体的名称，如果首字母大写，则可以被其他的包访问；如果首字母小写，则只能在本包中使用
-  可以简单的理解成，首字母大写是公有的，首字母小写是私有的
-  
-3、结构体中属性名的大写
-如果属性名小写则在数据解析（如json解析,或将结构体作为请求或访问参数）时无法解析
- --------------------------------------------------------------------------------------------------------
-
-Golang文件名命名规则
-文件名_平台.go
-文件名_test.go或者 文件名_平台_test.go
-文件名_版本号.go
-文件名_(平台:可选)_CPU类型.go
-
-
-注意点一、
-go build 的时候会选择性地编译以系统名结尾的文件(linux、darwin、windows、freebsd)。例如Linux(Unix)系统下编译只会选择array_linux.go文件，其它系统命名后缀文件全部忽略。
-
- 注意点二、
-在xxx.go文件的文件头上添加 // + build !windows (tags)，可以选择在windows系统下面不编译 
-// +build !windows
-package main
-
-总结：golang跨平台没有java好用，但是跟c语言差不多，都得针对不同平台不同特性迭轮子
-
-
-
-
-
-文件命名规范
-https://golang.google.cn/doc/effective_go.html#mixed-caps
-https://golang.org/doc/effective_go.html#package-names
-https://www.cnblogs.com/hetonghai/p/9049536.html
-
-
-
-
-https://golang.org
-https://github.com/golang/go
-
-
-中文社区
-https://studygolang.com/
-https://gocn.vip/
-https://github.com/shen100/golang123
-
-
-学习示例
-https://github.com/SimonWaldherr/golang-examples
-
-
-
-
-
-学习教程
-http://www.runoob.com/go/go-tutorial.html
-https://blog.csdn.net/han0373/article/category/7676220
-https://github.com/Unknwon/the-way-to-go_ZH_CN
-https://github.com/dariubs/GoBooks
-https://github.com/golang101/golang101
-
-https://github.com/Alikhll/golang-developer-roadmap/blob/master/i18n/ReadMe-zh-CN.md
-
 ---------------------------------------------------------------------------------------------------------------------  
 Golang 在 Mac、Linux、Windows 下如何交叉编译
 
@@ -137,13 +150,19 @@ Golang 支持交叉编译，在一个平台上生成另一个平台的可执行�
 
 Mac 下编译 Linux 和 Windows 64位可执行程序
 CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build main.go
-CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build main.go
+CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build go_redis_v8.go
+
+CGO_ENABLED=0 GOOS=linux GOARCH=arm64 go build -o go_redis_v8 go_redis_v8.go
+CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build go_redis_v8.go
+CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -o main-linux main.go
+CGO_ENABLED=0 GOOS=darwin GOARCH=amd64 go build -o main-mac main.go
 
 
 Linux 下编译 Mac 和 Windows 64位可执行程序
 CGO_ENABLED=0 GOOS=darwin GOARCH=amd64 go build main.go
 CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build main.go
 
+CGO_ENABLED=0 GOOS=darwin GOARCH=amd64 go build -o go_redis_v8.mac go_redis_v8.go
 
 Windows 下编译 Mac 和 Linux 64位可执行程序
 

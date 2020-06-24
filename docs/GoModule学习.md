@@ -7,6 +7,9 @@ export GOPROXY=https://goproxy.io
 
 go help
 go mod help
+go mod：查看所有指令
+
+
 
 
 go mod init 
@@ -27,6 +30,8 @@ go run、go build 也会自动下载依赖
 
 参考
 https://blog.csdn.net/e421083458/article/details/89762113
+https://www.jianshu.com/p/dca7c631587f
+https://zhuanlan.zhihu.com/p/116410261
 
 
 

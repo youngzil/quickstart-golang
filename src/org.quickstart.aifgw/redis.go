@@ -10,8 +10,10 @@ import (
 
 var ctx = context.Background()
 
+var xm = "10.1.243.23:7000"
+
 //var xm = "127.0.0.1:6379"
-var xm = "20.26.37.179:28001"
+//var xm = "20.26.37.179:28001"
 var xyw = "20.26.103.195:6601"
 var zfb = "20.26.103.210:6601"
 
@@ -161,66 +163,69 @@ func pretty(data string) string {
 
 func main() {
 
-	fmt.Println("服务网关 Redis 配置检查工具（测试环境）\n")
+	for true {
 
-	env := ""
-	fmt.Print("环境列表:\n1.项目\n2.新业务\n3.准发布\n请输入环境序号: ")
-	fmt.Scanln(&env)
+		fmt.Println("服务网关 Redis 配置检查工具（测试环境）\n")
 
-	addr, err := getRedisAddr(env)
-	if err != nil {
-		fmt.Println("err: 序号错误")
-		return
+		env := ""
+		fmt.Print("环境列表:\n1.项目\n2.新业务\n3.准发布\n请输入环境序号: ")
+		fmt.Scanln(&env)
+
+		addr, err := getRedisAddr(env)
+		if err != nil {
+			fmt.Println("err: 序号错误")
+			return
+		}
+
+		client, err := createRedisClient(addr)
+		if err != nil {
+			fmt.Println("err: " + err.Error())
+			return
+		}
+
+		apiCode := ""
+		fmt.Print("请输入 ApiCode: ")
+		fmt.Scanln(&apiCode)
+		apiCode = strings.TrimSpace(apiCode)
+
+		api := getApi(client, apiCode)
+		if api == "" {
+			fmt.Println("Api 不存在")
+			continue
+		}
+
+		fmt.Println("\n== 应用配置 ==")
+		fmt.Println(pretty(getApp(client, apiCode)))
+
+		fmt.Println("\n== 接口配置 ==")
+		fmt.Println(pretty(api))
+
+		fmt.Println("\n== 接口参数 ==")
+		params := getParams(client, apiCode)
+		for _, param := range params {
+			fmt.Println(pretty(param))
+		}
+
+		fmt.Println("\n== 接口版本 ==")
+		versions := getVersions(client, apiCode)
+		for _, version := range versions {
+			fmt.Println(pretty(version))
+		}
+
+		fmt.Println("\n== 路由分组 ==")
+		groups := getGroups(client, apiCode)
+		nodes := make([]string, 0)
+		for _, group := range groups {
+			fmt.Println(pretty(group))
+			groupCode := group[strings.Index(group, "groupCode\":")+12 : strings.Index(group, "\",\"id\"")]
+			nodes = append(nodes, getNode(client, groupCode))
+		}
+
+		fmt.Println("\n== 路由节点 ==")
+		for _, node := range nodes {
+			fmt.Println(pretty(node))
+		}
+
+		fmt.Println()
 	}
-
-	client, err := createRedisClient(addr)
-	if err != nil {
-		fmt.Println("err: " + err.Error())
-		return
-	}
-
-	apiCode := ""
-	fmt.Print("请输入 ApiCode: ")
-	fmt.Scanln(&apiCode)
-	apiCode = strings.TrimSpace(apiCode)
-
-	api := getApi(client, apiCode)
-	if api == "" {
-		fmt.Println("Api 不存在")
-		return
-	}
-
-	fmt.Println("\n== 应用配置 ==")
-	fmt.Println(pretty(getApp(client, apiCode)))
-
-	fmt.Println("\n== 接口配置 ==")
-	fmt.Println(pretty(api))
-
-	fmt.Println("\n== 接口参数 ==")
-	params := getParams(client, apiCode)
-	for _, param := range params {
-		fmt.Println(pretty(param))
-	}
-
-	fmt.Println("\n== 接口版本 ==")
-	versions := getVersions(client, apiCode)
-	for _, version := range versions {
-		fmt.Println(pretty(version))
-	}
-
-	fmt.Println("\n== 路由分组 ==")
-	groups := getGroups(client, apiCode)
-	nodes := make([]string, 0)
-	for _, group := range groups {
-		fmt.Println(pretty(group))
-		groupCode := group[strings.Index(group, "groupCode\":")+12 : strings.Index(group, "\",\"id\"")]
-		nodes = append(nodes, getNode(client, groupCode))
-	}
-
-	fmt.Println("\n== 路由节点 ==")
-	for _, node := range nodes {
-		fmt.Println(pretty(node))
-	}
-
-	fmt.Println()
 }
