@@ -9,10 +9,10 @@ target/
 
 
 
-go.sum
-vendor/
-coverage.txt
-examples/test
+#go.sum
+#vendor/
+#coverage.txt
+#examples/test
 
 
 
