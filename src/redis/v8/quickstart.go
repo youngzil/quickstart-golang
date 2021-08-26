@@ -1,12 +1,9 @@
 package main
 
 import (
-	"context"
 	"fmt"
 	"github.com/go-redis/redis/v8"
 )
-
-var ctx = context.Background()
 
 func ExampleNewClient() {
 	rdb := redis.NewClient(&redis.Options{
