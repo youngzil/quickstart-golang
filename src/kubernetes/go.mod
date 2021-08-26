@@ -1,6 +1,6 @@
 module org.quickstart.kubernetes
 
-go 1.14
+go 1.17
 
 require (
 	github.com/imdario/mergo v0.3.9 // indirect

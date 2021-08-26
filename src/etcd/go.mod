@@ -1,6 +1,6 @@
 module org.quickstart.etcd
 
-go 1.14
+go 1.17
 
 require (
 	github.com/coreos/etcd v3.3.22+incompatible

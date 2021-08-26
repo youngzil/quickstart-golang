@@ -1,6 +1,6 @@
 module org.quickstart.golang
 
-go 1.14
+go 1.17
 
 require (
 	github.com/davyxu/golog v0.1.0 // indirect

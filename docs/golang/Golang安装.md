@@ -11,12 +11,13 @@ go env
 
 #golang安装
 export GOROOT="/usr/local/Cellar/go/1.14.4/libexec"
-export GOPATH=/Users/yangzl/go:/Users/yangzl/git/quickstart-golang
-export PATH=$PATH:$GOPATH/bin
+export GOROOT=$HOME/software/go
+export GOPATH=$HOME/gopath:$HOME/git/quickstart-golang
+export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
+#(国外服务器请忽略此行输入)
+export GOPROXY=https://goproxy.cn,direct
 
-export GOROOT=/home/aifgw/go/go
-export GOROOT=/home/aifgw/go/go
-export PATH=$PATH:$GOROOT/bin
+
 
 
 Linux安装：
@@ -27,44 +28,22 @@ export GOPATH=/home/aibuild45/yang/go
 export PATH=$PATH:$GOROOT/bin
 3、go env
 
-
 source .bash_profile
 source ~/.zshrc
+
+[Linux下安装配置Go语言环境](https://9yu.cc/index.php/archives/12/)
+
+
+
+安装完成后
+go version
+go env  #查看安装信息
+
 
 
 go build hello.go
 ./hello
 或者
 go run hello.go
-
-
-
-https://golang.org
-https://github.com/golang/go
-
-
-中文社区
-https://studygolang.com/
-https://gocn.vip/
-https://github.com/shen100/golang123
-
-
-学习示例
-https://github.com/SimonWaldherr/golang-examples
-
-
-
-
-
-学习教程
-http://www.runoob.com/go/go-tutorial.html
-https://blog.csdn.net/han0373/article/category/7676220
-https://github.com/Unknwon/the-way-to-go_ZH_CN
-https://github.com/dariubs/GoBooks
-https://github.com/golang101/golang101
-
-https://github.com/Alikhll/golang-developer-roadmap/blob/master/i18n/ReadMe-zh-CN.md
-
-
 
 
