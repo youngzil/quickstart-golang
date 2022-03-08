@@ -32,6 +32,9 @@ source .bash_profile
 source ~/.zshrc
 
 [Linux下安装配置Go语言环境](https://9yu.cc/index.php/archives/12/)
+[GO macOS下使用GoLand安装和使用](https://blog.csdn.net/qq_18505715/article/details/105643211)  
+[mac：Go安装和配置+GoLand安装和使用之完整教程](https://blog.csdn.net/zxy_666/article/details/80182688)  
+
 
 
 

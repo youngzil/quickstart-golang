@@ -33,6 +33,8 @@ https://blog.csdn.net/e421083458/article/details/89762113
 https://www.jianshu.com/p/dca7c631587f
 https://zhuanlan.zhihu.com/p/116410261
 
+[GO 依赖管理工具go Modules（官方推荐）](https://segmentfault.com/a/1190000020543746)
+[Go依赖模块版本之Module避坑使用详解](https://www.huaweicloud.com/articles/e6d378ea113c6a82c5f2856a2ca8d4e1.html)
 
 
 
